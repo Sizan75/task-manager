@@ -82,14 +82,14 @@ const SignUp = () => {
                         <label className="label"> <span className="label-text">Name</span></label>
                         <input type="text" {...register("name", {
                             required: "Name is Required"
-                        })} className="input input-bordered input-success w-full max-w-xs" />
+                        })} className="w-full px-3 py-2 border rounded-md       " />
                         {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Email</span></label>
                         <input type="email" {...register("email", {
                             required: true
-                        })} className="input input-bordered input-success w-full max-w-xs" />
+                        })} className="w-full px-3 py-2 border rounded-md       " />
                         {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
                     </div>
                     <div className="form-control w-full max-w-xs">
@@ -98,15 +98,15 @@ const SignUp = () => {
                             required: "Password is required",
                             minLength: { value: 6, message: "Password must be 6 characters long" },
                             pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'Password must have uppercase, number and special characters' }
-                        })} className="input input-bordered input-success w-full max-w-xs" />
+                        })} className="w-full px-3 py-2 border rounded-md       " />
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                     </div>
-                    <input className='bg-blue-500 w-full mt-4' value="Sign Up" type="submit" />
+                    <input className='w-full px-8 py-3 font-semibold rounded-md bg-violet-400' value="Sign Up" type="submit" />
                     {signUpError && <p className='text-red-600'>{signUpError}</p>}
                 </form>
                 <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
                 <div className="divider">OR</div>
-                <button onClick={handleGoogleSignIn} className="px-8 py-3 font-semibold border rounded dark:border-gray-100 dark:text-gray-100"><FcGoogle></FcGoogle>  Google Sign In</button>
+                <button onClick={handleGoogleSignIn} className="px-8 py-3 font-semibold border rounded dark:border-gray-100   "><FcGoogle></FcGoogle>  Google Sign In</button>
 
             </div>
         </div>

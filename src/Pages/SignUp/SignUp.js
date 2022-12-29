@@ -25,6 +25,7 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user);
                 toast('User Created Successfully.')
+                navigate(from, { replace: true });
 
                 const userInfo = {
                     displayName: data.name,
@@ -78,35 +79,43 @@ const SignUp = () => {
             <div className='w-96 p-7'>
                 <h2 className='text-xl text-center'>Sign Up</h2>
                 <form onSubmit={handleSubmit(handleSignUp)}>
-                    <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Name</span></label>
+                    <div className="form-control w-full max-w-xs mt-5">
+                       
+				<label for="email" className="block text-base ">Name</label>
+                       
                         <input type="text" {...register("name", {
                             required: "Name is Required"
-                        })} className="w-full px-3 py-2 border rounded-md       " />
+                        })} className="w-full px-3 py-2 border-violet-400 rounded-md  ring-2 ring-offset-1  ring-violet-400" />
                         {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
                     </div>
-                    <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Email</span></label>
+                    <div className="form-control w-full max-w-xs mt-5">
+                      
+				<label for="email" className="block text-base">Email address</label>
                         <input type="email" {...register("email", {
                             required: true
-                        })} className="w-full px-3 py-2 border rounded-md       " />
+                        })} className="w-full px-3 py-2 border-violet-400 rounded-md  ring-2 ring-offset-1  ring-violet-400       " />
                         {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
                     </div>
-                    <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Password</span></label>
+                    <div className="form-control w-full max-w-xs mt-5 mb-5">
+                        
+				<label for="email" className="block text-base">Password</label>
                         <input type="password" {...register("password", {
                             required: "Password is required",
                             minLength: { value: 6, message: "Password must be 6 characters long" },
                             pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'Password must have uppercase, number and special characters' }
-                        })} className="w-full px-3 py-2 border rounded-md       " />
+                        })} className="w-full px-3 py-2 border-violet-400 rounded-md  ring-2 ring-offset-1  ring-violet-400       " />
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                     </div>
                     <input className='w-full px-8 py-3 font-semibold rounded-md bg-violet-400' value="Sign Up" type="submit" />
                     {signUpError && <p className='text-red-600'>{signUpError}</p>}
                 </form>
                 <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
-                <div className="divider">OR</div>
-                <button onClick={handleGoogleSignIn} className="px-8 py-3 font-semibold border rounded dark:border-gray-100   "><FcGoogle></FcGoogle>  Google Sign In</button>
+                <div className="flex items-center w-full my-4">
+                    <hr className="w-full text-gray-500"/>
+                        <p className="px-3 text-gray-500">OR</p>
+                        <hr className="w-full text-gray-500" />
+                        </div>
+                <button onClick={handleGoogleSignIn} className="flex items-center justify-center w-full p-4 space-x-4 border-violet-400 rounded-md ring-2 ring-offset-1  ring-violet-400"><FcGoogle className='text-3xl'></FcGoogle>  Google Sign In</button>
 
             </div>
         </div>

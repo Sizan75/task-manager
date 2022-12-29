@@ -24,7 +24,7 @@ const AddTask = () => {
                 const tasks = {
                     image: imgdata.data.url,
                     name: data.name,
-                    email: user.email
+                    email: user?.email
                 }
                 fetch('http://localhost:5000/tasks', {
                     method: 'POST',

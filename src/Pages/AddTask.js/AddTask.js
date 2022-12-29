@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
+import { AuthContext } from '../../Context/AuthProvider';
 const AddTask = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const imageHostKey = process.env.REACT_APP_img_key
-    console.log(imageHostKey)
+    const imageHostKey = process.env.REACT_APP_img_key;
+    const {user}=useContext(AuthContext)
+    console.log(user.email)
 
 
     const handleAddTask = data => {
-        console.log(data.name, data.photo[0])
         const image = data.photo[0];
         const formData = new FormData();
         formData.append('image', image);
-        console.log("image", image);
 
         const url = `https://api.imgbb.com/1/upload?&key=${imageHostKey}`;
         fetch(url, {
@@ -24,7 +24,7 @@ const AddTask = () => {
                 const tasks = {
                     image: imgdata.data.url,
                     name: data.name,
-                    email: 'email'
+                    email: user.email
                 }
                 fetch('http://localhost:5000/tasks', {
                     method: 'POST',

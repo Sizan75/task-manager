@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import AddTask from "../Pages/AddTask.js/AddTask";
+import CompletedTask from "../Pages/CompletedTask/CompletedTask";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import MyTask from "../Pages/MyTask/MyTask";
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
                 path: '/update/:id',
                 loader: ({params}) => fetch(`https://task-manager-server-nine.vercel.app/update/${params.id}`),
                 element: <UpdateForm></UpdateForm>
+            },
+            {
+                path: '/completedtask',
+                element: <CompletedTask></CompletedTask>
             }           
         ]
 }])

@@ -50,7 +50,7 @@ const SignUp = () => {
             displayName: name,
             email: email,
         }
-        fetch('http://localhost:5000/users', {
+        fetch('https://task-manager-server-nine.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

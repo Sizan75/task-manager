@@ -24,9 +24,9 @@ const AddTask = () => {
                 const tasks = {
                     image: imgdata.data.url,
                     name: data.name,
-                    email: user?.email
+                    email: data.email
                 }
-                fetch('http://localhost:5000/tasks', {
+                fetch('https://task-manager-server-nine.vercel.app/tasks', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -53,6 +53,14 @@ const AddTask = () => {
 
                         <input type="text" {...register("name", {
                             required: "Name is Required"
+                        })} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " />
+
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="block mb-2 text-sm font-medium text-gray-900">Email</label>
+
+                        <input defaultValue={user.email} type="email" {...register("email", {
+                            required: "Email is Required"
                         })} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " />
 
                     </div>

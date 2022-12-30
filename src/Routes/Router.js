@@ -7,6 +7,7 @@ import Login from "../Pages/Login/Login";
 import MyTask from "../Pages/MyTask/MyTask";
 import UpdateForm from "../Pages/MyTask/UpdateForm";
 import SignUp from "../Pages/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
 
@@ -23,7 +24,7 @@ export const router = createBrowserRouter([
             ,
             {
                 path: '/addtask',
-                element: <AddTask></AddTask>
+                element: <PrivateRoute><AddTask></AddTask></PrivateRoute>
             },
             {
                 path: '/signup',
@@ -35,16 +36,16 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/mytask',
-                element: <MyTask></MyTask>
+                element: <PrivateRoute><MyTask></MyTask></PrivateRoute>
             }
             ,{
                 path: '/update/:id',
                 loader: ({params}) => fetch(`https://task-manager-server-nine.vercel.app/update/${params.id}`),
-                element: <UpdateForm></UpdateForm>
+                element: <PrivateRoute><UpdateForm></UpdateForm></PrivateRoute>
             },
             {
                 path: '/completedtask',
-                element: <CompletedTask></CompletedTask>
+                element: <PrivateRoute><CompletedTask></CompletedTask></PrivateRoute>
             }           
         ]
 }])

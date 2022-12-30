@@ -4,6 +4,7 @@ import AddTask from '../AddTask.js/AddTask';
 const Home = () => {
     return (
         <div>
+            <AddTask></AddTask>
         </div>
     );
 };

@@ -8,10 +8,10 @@ const CompletedTask = () => {
     
     const { data: completedtask = [], isLoading, refetch } = useQuery({
         queryKey: ['completedtask', user?.email],
-        queryFn: () => fetch(`http://localhost:5000/completetask?email=${user?.email}`)
+        queryFn: () => fetch(`https://task-manager-server-nine.vercel.app/completetask?email=${user?.email}`)
             .then(res => res.json())
     })
-    if (isLoading) {
+    if (isLoading && user ) {
         return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
     }
     return (

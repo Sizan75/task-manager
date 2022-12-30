@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import task from '../../assets/task.png'
+import { AuthContext } from '../../Context/AuthProvider';
+import { FaSignOutAlt, FaUser } from 'react-icons/fa';
+
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+   
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+      logOut()
+        .then(() => { })
+        .catch(err => console.log(err));
+    }
+   
     return (
         <div>
-
-
             <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div className="relative flex items-center justify-between">
                     <Link
@@ -44,6 +54,56 @@ const Navbar = () => {
                                 Completed Task
                             </Link>
                         </li>
+
+
+
+
+                        {
+                                user?.uid ?
+                                    <>
+                                        
+
+
+
+                                        {user?.photoURL ?
+                                            <div className="avatar">
+                                                <div className="w-12 rounded-full tooltip" data-tip={user?.displayName}>
+
+                                                    <img src={user?.photoURL} alt="" />
+                                                </div>
+
+                                            </div>
+                                            : <FaUser></FaUser>}
+
+
+                                        <li className="text-gray-800  font-semibold hover:text-purple-600">
+                                            <button onClick={handleLogOut}><NavLink to="/login"><FaSignOutAlt></FaSignOutAlt></NavLink></button>
+                                        </li>
+                                    </> :
+
+                                    <>
+
+                                        <li className="text-gray-600 font-semibold hover:text-purple-600">
+                                            <NavLink to="/login">Login</NavLink>
+                                        </li>
+                                        <li className="text-gray-800  font-semibold hover:text-purple-600">
+                                            <NavLink to="/signup">Sign Up</NavLink>
+                                        </li>
+                                    </>
+                            }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                     </ul>
                     <div className="lg:hidden">

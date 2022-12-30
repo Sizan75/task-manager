@@ -56,7 +56,6 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
 
-                saveUser(user.displayName, user.email)
 
             })
             .catch(error => console.error(error))

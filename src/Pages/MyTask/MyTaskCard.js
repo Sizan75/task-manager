@@ -6,7 +6,7 @@ const MyTaskCard = ({ task, handleDelete }) => {
     const { name, image, _id } = task
 
     const handleComplete = (id, name) => {
-        fetch(`http://localhost:5000/complete/${id}`,{
+        fetch(`https://task-manager-server-nine.vercel.app/complete/${id}`,{
             method: 'PUT',
             headers: {
                 'content-type' : 'application/json'

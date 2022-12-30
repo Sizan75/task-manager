@@ -19,15 +19,6 @@ const MyTask = () => {
         return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
     }
 
-    // useEffect(() => {
-    //     fetch(`https://task-manager-server-nine.vercel.app/mytasks?email=${user?.email}`)
-    //         .then(res => res.json())
-    //         .then(data =>
-    //             {   console.log(data)
-    //                  setMyTask(data)
-    //             })
-    // }, [user?.email])
-
 
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to delete this task');
